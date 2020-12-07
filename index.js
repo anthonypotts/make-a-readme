@@ -18,10 +18,23 @@ const promptUser = () => {
             validate: nameInput => {
                 if (nameInput) {
                     return true;
-              }     else {
+                }   else {
+                    console.log('Please enter the name of the project!');
+                    return false;
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is your Github username? (Required)',
+            validate: nameInput => {
+                if (nameInput) {
+                    return true;
+                }   else {
                     console.log('Please enter your name!');
                     return false;
-              }
+                }
             }
         },
         {
@@ -33,19 +46,6 @@ const promptUser = () => {
                     return true;
                 }   else {
                     console.log('Please provide a valid email address!');
-                    return false;
-                }
-            }
-        },
-        {
-            type: 'input',
-            name: 'description',
-            message: 'Would you like to provide a description of your project',
-            validate: descriptionInput => {
-                if (descriptionInput) {
-                    return true;
-                }   else {
-                    console.log('Please provide a description!');
                     return false;
                 }
             }
@@ -147,7 +147,7 @@ const promptUser = () => {
 promptUser().then(data => {
     const readMe = generateMarkdown(data);
 
-    fs.writeFile('./read-me.md', readMe, err => {
+    fs.writeFile('./README.md', readMe, err => {
         if (err) {
             rejects(err);
             return;
@@ -155,7 +155,7 @@ promptUser().then(data => {
 
         resolve({
             ok: true,
-            message: "README created"
+            message: "README created, check your root folder!"
         });
     });
 })
