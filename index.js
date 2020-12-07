@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 const generatePage = require('./utils/generateMarkdown.js');
 const fs = require('fs');
-
+const { rejects } = require('assert');
+const { resolve } = require('path');
 
 
 // array of questions for user
@@ -131,14 +132,19 @@ const promptUser = () => {
     ]);
 };
 
-// function to write README file
-function writeToFile(fileName, data) {
-}
-
-// function to initialize program
-function init() {
-
-}
-
 // function call to initialize program
-promptUser();
+promptUser().then(data => {
+    const readMe = generatePage(data);
+
+    fs.writeFile('./read-me.md', readMe, err => {
+        if (err) {
+            rejects(err);
+            return;
+        }
+
+        resolve({
+            ok: true,
+            message: "README created"
+        });
+    });
+})

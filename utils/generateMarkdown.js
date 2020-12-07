@@ -1,6 +1,16 @@
 // function to generate markdown for README
-function generateMarkdown(data) {
+const generateMarkdown = data => {
   return `# ${data.title}
+  ## Description
+  ${data.description}
+
+  ## Website
+  ${data.website}
+
+  ## Repository
+  ${data.github}
+
+  
 
 `;
 }
