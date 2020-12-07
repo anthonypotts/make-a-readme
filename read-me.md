@@ -1,14 +1,12 @@
-// function to generate markdown for README
-const generateMarkdown = data => {
-  return `# ${data.title}
+# make-a-readme
   ## Description
-  ${data.description}
+  as;dlfkajsdf
 
   ## Website
-  ${data.website}
+  asdf;lkj
 
   ## Repository
-  ${data.github}
+  asf;lkj
 
   ### Table of Contents
   - [Installation](#installation)
@@ -16,7 +14,6 @@ const generateMarkdown = data => {
   - [Contributions](#contributions)
   - [Languages](#languages)
   - [License](#license)
-  - [Questions](#questions)
 
   ## Installation
   1. To install this application, clone the repository into your terminal.
@@ -25,22 +22,14 @@ const generateMarkdown = data => {
   4. In order to run the program, type "node index.js" into the terminal!
 
   ## Usage
-  ${data.usage}
+  asd;flkj
 
   ## Contributions
-  ${data.contributions}
+  asdfjl;k
 
   ## Languages
-  ${data.languages}
+  Node
 
   ## License
-  ${data.license}
+  IBM
 
-  ## Questions
-  ${data.github}
-  ${data.email}
-
-`;
-};
-
-module.exports = generateMarkdown;
