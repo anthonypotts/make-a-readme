@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
+const { resolve } = require('path');
 
 
 // array of questions for user
@@ -147,15 +148,17 @@ const promptUser = () => {
 promptUser().then(data => {
     const readMe = generateMarkdown(data);
 
-    fs.writeFile('./README.md', readMe, err => {
-        if (err) {
-            rejects(err);
-            return;
-        }
-
-        resolve({
-            ok: true,
-            message: "README created, check your root folder!"
+    return new Promise((resolve, reject) => {
+        fs.writeFile('./README.md', readMe, err => {
+            if (err) {
+                reject(err);
+                return;
+            }
+    
+            resolve({
+                ok: true,
+                message: "README created, check your root folder!"
+            });
         });
     });
-})
+});
