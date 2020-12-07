@@ -1,8 +1,6 @@
 const inquirer = require('inquirer');
-const generatePage = require('./utils/generateMarkdown.js');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 const fs = require('fs');
-const { rejects } = require('assert');
-const { resolve } = require('path');
 
 
 // array of questions for user
@@ -15,7 +13,7 @@ const promptUser = () => {
     return inquirer.prompt([
         {
             type: 'input',
-            name: 'name',
+            name: 'title',
             message: 'What is the name of your project? (Required)',
             validate: nameInput => {
                 if (nameInput) {
@@ -24,6 +22,19 @@ const promptUser = () => {
                     console.log('Please enter your name!');
                     return false;
               }
+            }
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: 'Please provide your email address',
+            validate: emailInput => {
+                if (emailInput) {
+                    return true;
+                }   else {
+                    console.log('Please provide a valid email address!');
+                    return false;
+                }
             }
         },
         {
@@ -134,7 +145,7 @@ const promptUser = () => {
 
 // function call to initialize program
 promptUser().then(data => {
-    const readMe = generatePage(data);
+    const readMe = generateMarkdown(data);
 
     fs.writeFile('./read-me.md', readMe, err => {
         if (err) {
