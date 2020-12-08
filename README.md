@@ -37,6 +37,3 @@
 
   ## Questions
   ampotts24@gmail.com
-
-  [![readme tutorial](https://drive.google.com/file/d/1vUZmlbYBRiuAwMm1_kcjAlVRP1nF0kHo/view)]
-
